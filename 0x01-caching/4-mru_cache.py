@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Define the class LRUCache that inherits from BaseCaching
+"""Define the class MRUCache that inherits from BaseCaching
 and is a caching system"""
 
 from base_caching import BaseCaching
 
 
-class LRUCache(BaseCaching):
-    """Represent a basic caching system with a LRU implementation"""
+class MRUCache(BaseCaching):
+    """Represent a basic caching system with a MRU implementation"""
     def __init__(self):
         """initialize data and variables for the cahing system"""
         super().__init__()
@@ -22,7 +22,7 @@ class LRUCache(BaseCaching):
             self.item_positions.append(key)
             elmt_count = len(self.cache_data.items())
             if elmt_count > super().MAX_ITEMS:
-                discard_key = self.item_positions[0]
+                discard_key = self.item_positions[len(self.item_positions) - 2]
                 self.cache_data.pop(discard_key)
                 self.item_positions.remove(discard_key)
                 print("DISCARD: {}".format(discard_key))
